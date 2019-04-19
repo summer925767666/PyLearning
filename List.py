@@ -5,6 +5,7 @@
 """
 
 
+# 列表功能演示
 def list():
     lst = [5.4, "hello", 2]  # 使用[]创建并初始化,类型可以不同！！！
 
@@ -35,11 +36,8 @@ def list():
     print(lst)
 
 
-def main():
-    # 列表功能演示
-    # list()
-
-    # 求平均数
+# 求平均数
+def average():
     nums = []
 
     for i in range(0, 5):
@@ -47,6 +45,46 @@ def main():
         nums.append(num)
 
     print("the average is", sum(nums) / len(nums))
+
+
+# 交换列表元素
+def swap(lst, a, b):
+    """"
+    函数调用时，列表类似与c语言的指针，可以实现地址传
+    因为py没有指针，所以地址传递只能用这种形式
+    这一点确实没法跟c语言抗衡
+    """
+    tmp = lst[a]
+    lst[a] = lst[b]
+    lst[b] = tmp
+
+
+# 列表解析、列表推导
+def listdeduce():
+    """"
+    一种简易的在原列表的基础上生成新列表的方法
+    类似与c#的foreach linq语句；或者理解为一种语法糖
+    格式：[exp for x in list]，对list里的每一个元素x，执行表达式exp操作
+    """
+    students = [["zhao", 80], ["qian", 70], ["sun", 90]]
+
+    print(1.0 * sum([x[1] for x in students]) / len(students))  # 求平均分
+
+    students.sort(key=lambda x: x[1])  # ！！！使用匿名lambda函数
+    # students.sort(key=f，reverse=true) #表示逆序排列
+    print(students)
+
+
+# lambda函数，匿名函数，py支持函数式编程
+def lambdafunc():
+    f = lambda x: x ** 2  # 返回x平方的匿名函数
+
+    print(f(8))
+
+
+def main():
+    listdeduce()
+    # lambdafunc()
 
 
 main()

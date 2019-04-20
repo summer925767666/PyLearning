@@ -63,7 +63,7 @@ def swap(lst, a, b):
 def listdeduce():
     """"
     一种简易的在原列表的基础上生成新列表的方法
-    类似与c#的foreach linq语句；或者理解为一种语法糖
+    类似与c#的foreach语句；或者理解为一种语法糖
     格式：[exp for x in list]，对list里的每一个元素x，执行表达式exp操作
     """
     students = [["zhao", 80], ["qian", 70], ["sun", 90]]
@@ -82,9 +82,43 @@ def lambdafunc():
     print(f(8))
 
 
+# 元祖touple，不可修改的列表,
+# 类似静态变量组成的列表，一旦赋值之后，其值不能修改
+# t = 1, 2 或者t =（1, 2),元组使用，定义，并不是使用（）定义的
+def toupluefunc():
+    # 应用举例，交换两个变量的值
+    a = 1
+    b = 2
+    a, b = b, a
+    print("a=%d,b=%d" % (a, b))
+
+    name, domain = "925767666@qq.com".split('@')
+    print(name, domain)
+
+
+# 单词排序
+def DSU_model():
+    """
+    Decorate,Sort,Undecorate 模式
+    """
+    words = ["abdefgh", "abcd", "abcdef"]
+
+    # 对列表进行装饰，使用元祖对列表进行重构
+    dec_words = [(len(word), word) for word in words]
+    # 对列表进行排序
+    dec_words.sort(reverse=True)
+    # 对列表反装饰
+    words = [word[1] for word in dec_words]
+
+    print(words)
+
+    # 使用lambda表达式
+    words.sort(key=lambda x: len(x))  # x为输入，len（x）为输出
+    print(words)
+
+
 def main():
-    listdeduce()
-    # lambdafunc()
+    DSU_model()
 
 
 main()
